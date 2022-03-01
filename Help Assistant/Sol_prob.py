@@ -1,4 +1,6 @@
 #importing libraries
+from json import encoder
+import json
 import nltk
 import numpy as np
 
@@ -41,14 +43,13 @@ def clean_corpus(corpus):
         cleaned_sentence.append(wordnet_lemmatizer.lemmatize(token)) 
     cleaned_corpus.append(' '.join(cleaned_sentence))
   return cleaned_corpus
-  
-  #Loading our intents
-  import json
-with open('intents.json', 'r') as file:
-  intents = json.load(file)
 
-  #Cleaning our Intents
-  corpus = []
+import json
+file= open('intents')
+intents= json.load(file)
+  
+#Cleaning our Intents
+corpus = []
 tags = []
 
 for intent in intents['intents']:
@@ -89,7 +90,7 @@ INTENT_NOT_FOUND_THRESHOLD = 0.40
 
 def predict_intent_tag(message):
   message = clean_corpus([message])
-  X_test = vectorizer.transform(message)
+  X_test = np.vectorize.transform(message)
   #print(message)
   #print(X_test.toarray())
   y = model.predict(X_test.toarray())
@@ -102,5 +103,65 @@ def predict_intent_tag(message):
   prediction[y.argmax()] = 1
   tag = encoder.inverse_transform([prediction])[0][0]
   return tag
+
+import random
+import time 
+
+def get_intent(tag):
+  # to return complete intent from intent tag
+  for intent in intents['intents']:
+    if intent['tag'] == tag:
+      return intent
+
+def perform_action(action_code, intent):
+  # funition to perform an action which is required by intent
+  
+  if action_code == 'CHECKING SERVER.....':
+    print('\n Checking database \n')
+    time.sleep(2)
+    current_status = ['No problem with our servers']
+    delivery_time = []
+    return {'intent-tag':intent['next-intent-tag'][0],
+            'yes Problem': random.choice(current_status),
+            }
+  
+  elif action_code == 'If you have a problem with this accusation':
+    ch = input('BOT: Do you want to continue (Y/n) ?')
+    if ch == 'y' or ch == 'Y':
+      choice = 0
+    else:
+      choice = 1
+    return {'intent-tag':intent['next-intent-tag'][choice]}
+  
+while True:
+  # get message from user
+  message = input('You: ')
+  # predict intent tag using trained neural network
+  tag = predict_intent_tag(message)
+  # get complete intent from intent tag
+  intent = get_intent(tag)
+  # generate random response from intent
+  response = random.choice(intent['responses'])
+  print('Bot: ', response)
+
+  # check if there's a need to perform some action
+  if 'action' in intent.keys():
+    action_code = intent['action']
+    # perform action
+    data = perform_action(action_code, intent)
+    # get follow up intent after performing action
+    followup_intent = get_intent(data['intent-tag'])
+    # generate random response from follow up intent
+    response = random.choice(followup_intent['responses'])
+    
+    # print randomly selected response
+    if len(data.keys()) > 1:
+      print('Bot: ', response.format(**data))
+    else:
+      print('Bot: ', response)
+
+  # break loop if intent was goodbye
+  if tag == 'goodbye':
+    break
   
  
