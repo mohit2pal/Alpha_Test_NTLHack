@@ -1,0 +1,69 @@
+{
+	"intents": 
+	[
+				{
+			"tag": "greeting",
+			"patterns": ["Hi there", "Is anyone there?","Hey","Hola", "Hello", "Good day"],
+			"responses": ["Hello, how can I help?", "Hello, what is your Problem?", "Hi there, how can I help?"]
+        		},
+        		{
+            "tag": "goodbye",
+            "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time", "No, that's it"],
+            "responses": ["See you!", "Have a nice day", "Bye! Come back again soon.","Bye! Hope you don't see me soon"]
+                },
+                {
+            "tag": "thanks",
+            "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
+            "responses": ["Happy to help!", "Any time!", "My pleasure"]
+                },
+                {
+            "tag": "noanswer",
+            "patterns": [],
+            "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand"]
+                },
+                {
+            "tag": "options",
+            "patterns": ["How you could help me?", "What help you provide?", "How you can be helpful?", "What support is offered"],
+            "responses": ["I can help you with Login difficulties among other things", "I can help u if there is an error on your screen","Tell me the problem that you are facing"]
+                },
+                {
+            "tag": "loading",
+            "patterns": ["Question is loading for too long", "Its buffering", "I am not able to move to the next question", "Site lagging", "Screen Froze", "Network Issue"],
+            "responses": ["I am checking if there is any issue with our server"],
+            "action": "CHECKING SERVER.....",
+            "next-intent-tag": ["network issue"]
+                },
+                {
+            "tag": "network issue",
+            "patterns": [],
+            "responses": ["Please check your internet connection", "Try closing background apps and trying again if the problem persists"]
+                },
+                {
+            "tag": "malpractice",
+            "patterns": ["Not able to continue exam", "Not being given access", "Malpractice Issue", "Malpractice"],
+            "responses": ["You have been booked under malpractice and will not be able to give exam"],
+            "action": "If you have a problem with this accusation",
+            "next-intent-tag": ["No Problem", "yes Problem"]
+                },
+                {
+            "tag": "No Problem",
+            "patterns": [],
+            "responses": ["Try not to cheat in exam as knowledge counts not marks","Cheating is injurious to your mind"]
+                },
+                {
+            "tag": "yes Problem",
+            "patterns": [],
+            "responses": ["Try contacting your proctor or our customer care number 1234567890.Is there anything else, we can help you with?"]
+                },
+                {
+            "tag": "suggestion",
+            "patterns": ["I want to give suggestions", "Please add suggestion instructions"],
+            "responses": ["Please tell me your suggestions, I will keep it in mind the next time"]
+                },
+                {
+            "tag": "finish",
+            "patterns": ["Can't finish exam", "Finish button not working", "I finshed my exam but can't leave", "Want to leave"],
+            "responses": ["Finish button becomes active only 30 minutes before the conclusion of the exam","You can leave earliest at 30 minutes before the exam finishes"]
+                }
+        ]
+}
