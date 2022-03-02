@@ -126,7 +126,7 @@ def perform_action(action_code, intent):
             }
   
   elif action_code == 'If you have a problem with this accusation':
-    ch = input('BOT: Do you want to continue (Y/n) ?')
+    ch = input('Beta: Do you want to continue (Y/n) ?')
     if ch == 'y' or ch == 'Y':
       choice = 0
     else:
@@ -135,14 +135,14 @@ def perform_action(action_code, intent):
   
 while True:
   # get message from user
-  message = input('You: ')
+  message = input('User: ')
   # predict intent tag using trained neural network
   tag = predict_intent_tag(message)
   # get complete intent from intent tag
   intent = get_intent(tag)
   # generate random response from intent
   response = random.choice(intent['responses'])
-  print('Bot: ', response)
+  print('Beta: ', response)
 
   # check if there's a need to perform some action
   if 'action' in intent.keys():
@@ -156,9 +156,9 @@ while True:
     
     # print randomly selected response
     if len(data.keys()) > 1:
-      print('Bot: ', response.format(**data))
+      print('Beta: ', response.format(**data))
     else:
-      print('Bot: ', response)
+      print('Beta: ', response)
 
   # break loop if intent was goodbye
   if tag == 'goodbye':
