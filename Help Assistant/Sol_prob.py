@@ -1,6 +1,4 @@
 #importing libraries
-from json import encoder
-import json
 import nltk
 import numpy as np
 
@@ -45,8 +43,8 @@ def clean_corpus(corpus):
   return cleaned_corpus
 
 import json
-file= open('intents')
-intents= json.load(file)
+file= open('intents.json').read()
+intents= json.loads(file)
   
 #Cleaning our Intents
 corpus = []
@@ -99,6 +97,7 @@ def predict_intent_tag(message):
   if y.max() < INTENT_NOT_FOUND_THRESHOLD:
     return 'noanswer'
   
+  from json import encoder
   prediction = np.zeros_like(y[0])
   prediction[y.argmax()] = 1
   tag = encoder.inverse_transform([prediction])[0][0]
