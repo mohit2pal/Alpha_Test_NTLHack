@@ -1,6 +1,7 @@
 #importing libraries
 import nltk
 import numpy as np
+import sklearn
 
 #Downloading packages
 
@@ -43,8 +44,8 @@ def clean_corpus(corpus):
   return cleaned_corpus
 
 import json
-file= open('intents.json').read()
-intents= json.loads(file)
+with open('./help_assistant2/intents.json', 'r') as f:
+  intents = json.load(f)
   
 #Cleaning our Intents
 corpus = []
@@ -88,7 +89,7 @@ INTENT_NOT_FOUND_THRESHOLD = 0.40
 
 def predict_intent_tag(message):
   message = clean_corpus([message])
-  X_test = np.vectorize.transform(message)
+  X_test = vz.transform(message)
   #print(message)
   #print(X_test.toarray())
   y = model.predict(X_test.toarray())
@@ -100,7 +101,7 @@ def predict_intent_tag(message):
   from json import encoder
   prediction = np.zeros_like(y[0])
   prediction[y.argmax()] = 1
-  tag = encoder.inverse_transform([prediction])[0][0]
+  tag = enc.inverse_transform([prediction])[0][0]
   return tag
 
 import random
