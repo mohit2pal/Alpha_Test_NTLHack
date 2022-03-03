@@ -6,32 +6,35 @@ nltk.download('punkt')
 
 rake = Rake()
 
-file_text = open("text.txt","r")
+# file_text = open("text.txt","r")
 
-text = file_text.read()
+# text = file_text.read()
 
-rake.extract_keywords_from_text(text)
-kws = rake.get_ranked_phrases()
+def nlp_check(text):
+    rake.extract_keywords_from_text(text)
+    kws = rake.get_ranked_phrases()
 
-ans_file = open("ans.txt","r")
-ans = ans_file.read()
+    ans_file = open("ans.txt","r")
+    ans = ans_file.read()
 
-for i in kws:
-    if (" " in i):
-        kws.remove(i)
-        i = i.split(' ')
-        for x in i:
-            kws.append(x)
+    for i in kws:
+        if (" " in i):
+            kws.remove(i)
+            i = i.split(' ')
+            for x in i:
+                kws.append(x)
 
-print(kws)
+    print(kws)
 
-marks = 0
+    marks = 0
 
-for i in kws:
-    if(i in ans):
-        marks += 1
-        print(i)
+    for i in kws:
+        if(i in ans):
+            marks += 1
+            print(i)
 
-score = (marks/5)
-print(marks)
-print(score)
+    score = (marks/5)
+    print(marks)
+    print(score)
+    
+    return marks

@@ -10,7 +10,7 @@ def ocr(image):
     return response
 
 
-img = cv2.imread('Sample.jpg')
+
 
 def grayscale(image):
     return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -22,10 +22,12 @@ def thersholding(image):
     return cv2.threshold(image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1] 
 
 
+def ocr_image():
+    img = cv2.imread('Sample.jpg')
+    # img = grayscale(img)
+    # img = thersholding(img)
+    # img = remove_noise(img)
+    text = ocr(img)
+    print(text)
+    return text
 
-# img = grayscale(img)
-# img = thersholding(img)
-# img = remove_noise(img)
-text = ocr(img)
-
-print(text)
