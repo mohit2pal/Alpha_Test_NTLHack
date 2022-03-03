@@ -59,7 +59,8 @@ function base() {
     
         console.log(body)
     
-        const myTimeout = setTimeout(api_call, 600)
+        // const myTimeout = setTimeout(api_call, 600)
+        api_call()
     
     })}
 
