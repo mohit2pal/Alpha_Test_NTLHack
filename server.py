@@ -2,6 +2,7 @@ from flask import Flask, request, render_template
 from ocr import ocr_image
 from NLPmodel import nlp_check
 import base64
+import json
 
 app = Flask(__name__)
 
@@ -22,6 +23,14 @@ def test():
         print(ans_string)
         marks = nlp_check(ans_string)
         print(marks)
+        
+        dicto = {"marks": marks}
+        
+        json_object = json.dumps(dicto, indent = 1)
+        
+        with open("./static/json/marks.json", "w") as outfile:
+            outfile.write(json_object)
+        
     return render_template('index.html')
     
     

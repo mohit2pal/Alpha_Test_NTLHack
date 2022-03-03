@@ -5,6 +5,24 @@ var uploaded_image
 
 var body
 
+function marks_update() {
+
+    console.log("run")
+
+    var chr = new XMLHttpRequest()
+    chr.open('GET', './static/json/marks.json', true)
+
+    chr.onload = function() {
+        var mark = JSON.parse(this.responseText)
+
+        console.log(mark['marks'])
+
+        document.getElementById('score').innerHTML = mark['marks']
+    }
+
+    chr.send()
+}
+
 const image_input = document.querySelector("#image_input");
 image_input.addEventListener("change", function() {
     const reader = new FileReader();
@@ -25,6 +43,9 @@ function api_call(){
     vhr.setRequestHeader('Content-Type', 'application/json')
 
     vhr.send(body2)
+
+    const myTimeout = setTimeout(marks_update, 2000)
+
   }
 
 function toDataUrl(url, callback) {
