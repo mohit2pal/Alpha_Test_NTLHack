@@ -6,16 +6,16 @@ nltk.download('punkt')
 
 rake = Rake()
 
-# file_text = open("text.txt","r")
+def nlp_check(ans):
+    
+    file_text = open("text.txt","r")
+    text = file_text.read()
 
-# text = file_text.read()
-
-def nlp_check(text):
     rake.extract_keywords_from_text(text)
     kws = rake.get_ranked_phrases()
 
-    ans_file = open("ans.txt","r")
-    ans = ans_file.read()
+    # ans_file = open("ans.txt","r")
+    # ans = ans_file.read()
 
     for i in kws:
         if (" " in i):
@@ -33,8 +33,12 @@ def nlp_check(text):
             marks += 1
             print(i)
 
-    score = (marks/5)
-    print(marks)
-    print(score)
+    score = (marks/len(kws))
     
-    return marks
+    if(marks >= 5):
+        score = 1
+        
+    print('Score', score)
+    print('Marks', marks )
+    
+    return score

@@ -23,11 +23,11 @@ def thersholding(image):
 
 
 def ocr_image():
-    img = cv2.imread('Sample.jpg')
+    img = cv2.imread('IMAGE.jpg')
     # img = grayscale(img)
     # img = thersholding(img)
     # img = remove_noise(img)
     text = ocr(img)
-    print(text)
+    # print(text)
     return text
 

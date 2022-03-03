@@ -15,10 +15,13 @@ def test():
         img_base64 = request.get_json()
         # print(img_base64)
         
-        decode = open('IMAGE.png', 'wb')
+        decode = open('IMAGE.jpg', 'wb')
         decode.write(base64.b64decode(img_base64['png']))
-    # ans_string = ocr_image()
-    # marks = nlp_check(ans_string)
+        ans_string = ocr_image()
+        
+        print(ans_string)
+        marks = nlp_check(ans_string)
+        print(marks)
     return render_template('index.html')
     
     

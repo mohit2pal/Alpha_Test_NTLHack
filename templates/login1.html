@@ -33,8 +33,37 @@
         </div>
       </form>
       <div class="sub">
-        <button id="submit" class="submit">Login</button>
+        <button id="submit" onclick="submitted()" class="submit">Login</button>
       </div>
     </div>
+    <div id="popup2">
+      <h3> PLEASE ENTER CORRECT PASSWORD AND USERNAME </h3>
+      <a href="#" class= "btn btn-secondary" onclick="check();" role="button" align-items:"center">OK</a>
+    </div>
+
+    <script>
+
+      function submitted() {
+        if (document.getElementById("login").value == 'Alpha' && document.getElementById("password").value == 'alpha') {
+          setTimeout(
+           function()
+             { window.open("/test","_self");}, 400);
+          
+        } 
+        else {
+        
+         check();
+        }
+      }
+
+      function check(){
+        var popup = document.getElementById("grade");
+        popup.classList.toggle("active");
+        var popup2 = document.getElementById("popup2");
+        popup2.classList.toggle("active");
+        
+      }
+
+      </script>
 </body>
 </html>
