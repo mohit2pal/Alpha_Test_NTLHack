@@ -171,8 +171,8 @@ def get_response(message):
   intent = get_intent(tag)
   response = random.choice(intent['responses'])
   
-  if(tag == 'goodbye'):
-    return "I do not understand..."
-  else:
-    return response
+  # if(tag == 'goodbye'):
+  #   return "I do not understand..."
+  # else:
+  return response
   
