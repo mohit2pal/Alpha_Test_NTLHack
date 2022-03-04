@@ -44,7 +44,7 @@ function api_call(){
 
     vhr.send(body2)
 
-    const myTimeout = setTimeout(marks_update, 2000)
+    const myTimeout = setTimeout(marks_update, 6000)
 
   }
 
