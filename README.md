@@ -31,3 +31,14 @@ as well as reduce man hours required to do so.
 + HTML
 + CSS
 + Javascript
+
+# Future Scope
++ Teachers can upload their own custom questions and answers.
++ Add support for ability to read cursive handwriting as well.
++ Improve accuracy
+# How One Can Use it
+
+# Members
++ Ritwatz Raj(https://github.com/ritwatz)
++ Subha Bal Pal(https://github.com/mohit2pal)
++ Karan Pargal(https://github.com/karanpargal)
