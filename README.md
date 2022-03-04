@@ -16,7 +16,13 @@ as well as reduce man hours required to do so.
 # Features
 + Answer extraction from image using OCR
 + Marks evaluation using NLP
-+ Automated help assistant
++ Automated help assistant named Beta
+
+# Platform Images
+<img src="/static/images/Login_Page.jpeg" height="125" />
+<img src="/static/images/Test_page.jpeg" height="125" />
+<img src="/static/images/Chatbot.jpeg" height="125" />
+<img src="/static/images/Score.jpeg" height="125" />
 
 # Technologies Used
 + Python
