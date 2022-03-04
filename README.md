@@ -48,7 +48,18 @@ as well as reduce man hours required to do so.
 + Teachers can upload their own custom questions and answers.
 + Add support for ability to read cursive handwriting as well.
 + Improve accuracy
-# How One Can Use it
+
+<h1>How One Can Use it</h1>
+<h2>a. Deploy the docker container</h2>
+<p> 1. First download the Docker desktop from : https://www.docker.com/products/docker-desktop</p>
+<p> 2. Install the application</p>
+<p> 3. Run the following command in terminal: </p>
+
+```
+docker run -d -p 5000:5000 ghcr.io/mohit2pal/alpha_test_ntlhack:main
+```
+
+<h2>b. Visit The Website: https://alpha-test-ntlhack.herokuapp.com/ </h2>
 
 # Members
 + Ritwatz Raj(https://github.com/ritwatz)
