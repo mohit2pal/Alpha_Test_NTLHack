@@ -4,7 +4,7 @@ import numpy as np
 import sklearn
 
 #Downloading packages
-
+nltk.download('omw-1.4')
 # downloading model to tokenize message
 nltk.download('punkt')
 # downloading stopwords
@@ -46,7 +46,7 @@ def clean_corpus(corpus):
 import json
 with open('./intents.json', 'r') as f:
   intents = json.load(f)
-  
+
 #Cleaning our Intents
 corpus = []
 tags = []
