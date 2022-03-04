@@ -44,7 +44,7 @@ def clean_corpus(corpus):
   return cleaned_corpus
 
 import json
-with open('./help_assistant2/intents.json', 'r') as f:
+with open('./intents.json', 'r') as f:
   intents = json.load(f)
   
 #Cleaning our Intents
@@ -133,35 +133,46 @@ def perform_action(action_code, intent):
       choice = 1
     return {'intent-tag':intent['next-intent-tag'][choice]}
   
-while True:
-  # get message from user
-  message = input('User: ')
-  # predict intent tag using trained neural network
-  tag = predict_intent_tag(message)
-  # get complete intent from intent tag
-  intent = get_intent(tag)
-  # generate random response from intent
-  response = random.choice(intent['responses'])
-  print('Beta: ', response)
+# while True:
+#   # get message from user
+#   message = input('User: ')
+#   # predict intent tag using trained neural network
+#   tag = predict_intent_tag(message)
+#   # get complete intent from intent tag
+#   intent = get_intent(tag)
+#   # generate random response from intent
+#   response = random.choice(intent['responses'])
+#   print('Beta: ', response)
 
-  # check if there's a need to perform some action
-  if 'action' in intent.keys():
-    action_code = intent['action']
-    # perform action
-    data = perform_action(action_code, intent)
-    # get follow up intent after performing action
-    followup_intent = get_intent(data['intent-tag'])
-    # generate random response from follow up intent
-    response = random.choice(followup_intent['responses'])
+#   # check if there's a need to perform some action
+#   if 'action' in intent.keys():
+#     action_code = intent['action']
+#     # perform action
+#     data = perform_action(action_code, intent)
+#     # get follow up intent after performing action
+#     followup_intent = get_intent(data['intent-tag'])
+#     # generate random response from follow up intent
+#     response = random.choice(followup_intent['responses'])
     
-    # print randomly selected response
-    if len(data.keys()) > 1:
-      print('Beta: ', response.format(**data))
-    else:
-      print('Beta: ', response)
+#     # print randomly selected response
+#     if len(data.keys()) > 1:
+#       print('Beta: ', response.format(**data))
+#     else:
+#       print('Beta: ', response)
 
-  # break loop if intent was goodbye
-  if tag == 'goodbye':
-    break
+#   # break loop if intent was goodbye
+#   if tag == 'goodbye':
+#     break
   
  
+ 
+def get_response(message):
+  tag = predict_intent_tag(message)
+  intent = get_intent(tag)
+  response = random.choice(intent['responses'])
+  
+  if(tag == 'goodbye'):
+    return "I do not understand..."
+  else:
+    return response
+  

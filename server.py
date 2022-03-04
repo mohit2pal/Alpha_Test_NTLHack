@@ -1,8 +1,10 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 from ocr import ocr_image
 from NLPmodel import nlp_check
 import base64
 import json
+
+from Sol_prob import get_response
 
 app = Flask(__name__)
 
@@ -31,8 +33,16 @@ def test():
         with open("./static/json/marks.json", "w") as outfile:
             outfile.write(json_object)
         
-    return render_template('index.html')
+    return render_template('index.html')   
     
+@app.route('/predict', methods=['POST'])
+def predict():
+    text = request.get_json().get("message")
+    response = get_response(text)
+    print(response)
+    print(type(response))
+    message = {"answer": response}
+    return jsonify(message)
     
 if __name__ == "__main__":
     app.run(debug=True)
