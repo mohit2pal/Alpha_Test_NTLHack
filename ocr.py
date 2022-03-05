@@ -28,6 +28,7 @@ def ocr_image():
     # img = thersholding(img)
     # img = remove_noise(img)
     text = ocr(img)
+    text1 = text.lower()
     # print(text)
-    return text
+    return text1
 
