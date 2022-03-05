@@ -22,11 +22,11 @@ as well as reduce man hours required to do so.
 <div align="Center">
     <img src="/static/images/Login_Page.jpeg" height="300" />
     <h2>Login to take your Test</h2>          
-    <img src="/static/images/Test_page.jpeg" height="300" />
+    <img src="/static/images/the_test_page.png" height="300" />
     <h2>Page for uploading answers</h2>
     <img src="/static/images/Chatbot.jpeg" height="300" />
     <h2>Your Help Assistant(Beta) for any problems</h2>
-    <img src="/static/images/Score.jpeg" height="300" />
+    <img src="/static/images/Scored.png" height="300" />
     <h2>Paper Evaluated and Marks Scored</h2>
 </div>
 
